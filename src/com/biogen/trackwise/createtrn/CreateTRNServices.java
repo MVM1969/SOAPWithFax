@@ -24,7 +24,7 @@ import com.biogen.util.YesNoSelection;
 /**
  * CreateTRNServices.java
  *
- * @author Dan Longo (dan.longo@biogen.com)
+ * @author Mark Marlow 
  * @version 1.0
  */
 // @WebService()
