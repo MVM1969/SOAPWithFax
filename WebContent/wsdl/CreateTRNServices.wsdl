@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://createtrn.trackwise.biogen.com" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax23="http://serviceresponse.trackwise.biogen.com/xsd" xmlns:ax21="http://bean.trackwise.biogen.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" targetNamespace="http://createtrn.trackwise.biogen.com">
+    <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax24="http://serviceresponse.trackwise.biogen.com/xsd" xmlns:ax22="http://bean.trackwise.biogen.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://createtrn.trackwise.biogen.com">
+            <xs:import namespace="http://bean.trackwise.biogen.com/xsd"/>
+            <xs:import namespace="http://serviceresponse.trackwise.biogen.com/xsd"/>
+            <xs:element name="main">
+                <xs:complexType> 
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="args" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            
+           
+            <xs:element name="CreateTRNServicesException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateTRNServicesException" nillable="true" type="ns:CreateTRNException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="CreateTRNException">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            
+            
+            <xs:complexType name="AttachmentType">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="fileName"
+						type="xs:string" />
+					<xs:element minOccurs="0" name="binaryData"
+						type="xs:base64Binary" />
+				</xs:sequence>
+			</xs:complexType>
+			           
+             <xs:element name="createTRN">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="type" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="action" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="dataFields" nillable="true" type="ax21:InputField"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="attachments" nillable="true" type="ns:AttachmentType"/>
+                     </xs:sequence>
+                    
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createTRNResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:ServiceResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://bean.trackwise.biogen.com/xsd">
+            <xs:complexType name="InputField">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="fieldName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="fieldValue" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="InputGrid">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="data" nillable="true" type="ax21:ArrayOfInputField"/>
+                    <xs:element minOccurs="0" name="dataRowCount" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="gridData" nillable="true" type="ax21:ArrayOfInputField"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfInputField">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="array" nillable="true" type="ax21:InputField"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://serviceresponse.trackwise.biogen.com/xsd">
+            <xs:complexType name="ServiceResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="responseStatus" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="values" nillable="true" type="ax23:SoapValues"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SoapValues">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="value" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+   
+    <wsdl:message name="CreateTRNServicesException">
+        <wsdl:part name="parameters" element="ns:CreateTRNServicesException"/>
+    </wsdl:message>
+   
+    <wsdl:message name="mainRequest">
+        <wsdl:part name="parameters" element="ns:main"/>
+    </wsdl:message>
+    
+    
+    <wsdl:message name="createTRNRequest">
+        <wsdl:part name="parameters" element="ns:createTRN"/>
+    </wsdl:message>
+    <wsdl:message name="createTRNResponse">
+        <wsdl:part name="parameters" element="ns:createTRNResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CreateTRNServicesPortType">
+        
+      
+        <wsdl:operation name="main">
+            <wsdl:input message="ns:mainRequest" wsaw:Action="urn:main"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="createTRN">
+            <wsdl:input message="ns:createTRNRequest" wsaw:Action="urn:createTRN"/>
+            <wsdl:output message="ns:createTRNResponse" wsaw:Action="urn:createTRNResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CreateTRNServicesSoap11Binding" type="ns:CreateTRNServicesPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+       
+      
+        <wsdl:operation name="main">
+            <soap:operation soapAction="urn:main" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        
+        <wsdl:operation name="createTRN">
+            <soap:operation soapAction="urn:createTRN" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CreateTRNServicesSoap12Binding" type="ns:CreateTRNServicesPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        
+        
+        <wsdl:operation name="main">
+            <soap12:operation soapAction="urn:main" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        
+        <wsdl:operation name="createTRN">
+            <soap12:operation soapAction="urn:createTRN" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CreateTRNServicesHttpBinding" type="ns:CreateTRNServicesPortType">
+        <http:binding verb="POST"/>
+        
+        
+        <wsdl:operation name="main">
+            <http:operation location="main"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+       
+        <wsdl:operation name="createTRN">
+            <http:operation location="createTRN"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CreateTRNServices">
+        <wsdl:port name="CreateTRNServicesHttpSoap11Endpoint" binding="ns:CreateTRNServicesSoap11Binding">
+            <soap:address location="http://localhost:8080/TechnicalProductComplaints/services/CreateTRNServices.CreateTRNServicesHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="CreateTRNServicesHttpsSoap11Endpoint" binding="ns:CreateTRNServicesSoap11Binding">
+            <soap:address location="http://localhost:8080/TechnicalProductComplaints/services/CreateTRNServices.CreateTRNServicesHttpsSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="CreateTRNServicesHttpSoap12Endpoint" binding="ns:CreateTRNServicesSoap12Binding">
+            <soap12:address location="http://localhost:8080/TechnicalProductComplaints/services/CreateTRNServices.CreateTRNServicesHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="CreateTRNServicesHttpsSoap12Endpoint" binding="ns:CreateTRNServicesSoap12Binding">
+            <soap12:address location="http://localhost:8080/TechnicalProductComplaints/services/CreateTRNServices.CreateTRNServicesHttpsSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="CreateTRNServicesHttpsEndpoint" binding="ns:CreateTRNServicesHttpBinding">
+            <http:address location="http://localhost:8080/TechnicalProductComplaints/services/CreateTRNServices.CreateTRNServicesHttpsEndpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="CreateTRNServicesHttpEndpoint" binding="ns:CreateTRNServicesHttpBinding">
+            <http:address location="http://localhost:8080/TechnicalProductComplaints/services/CreateTRNServices.CreateTRNServicesHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
+

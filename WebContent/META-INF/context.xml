@@ -1,0 +1,25 @@
+<Context>
+      
+<Resource name="trackwise" 
+		global="trackwise" 
+		auth="Container"
+		type="javax.sql.DataSource"
+             	description="Biogen Oracle DEV Database"
+             factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+             pathname="conf/tomcat-users.xml" 
+		maxTotal="20"
+             maxIdle="10"
+             maxWaitMillis="10000"
+		removeAbandonedTimeout="300"           
+             defaultAutoCommit="true"	
+		driverClassName="oracle.jdbc.OracleDriver"
+		url="jdbc:oracle:thin:@//xxxxxxxxxxx.com:PortNumber"
+		username="blah"
+		password="blah"
+		/>
+		
+		
+		
+		
+</Context>
+
